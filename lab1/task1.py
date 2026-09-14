@@ -223,8 +223,16 @@ roots_f2 = plot_graphical_separation(
 )
 
 print("Табличні інтервали f1(x):", table_method(f1, a=-10, b = 10))
-print("Аналітичний висновок f1(x)", analytical_method([1, -2, 0, 1, -1.5]))
+f1_analytical = analytical_method([1, -2, 0, 1, -1.5])
+print("Аналітичний висновок f1(x):\n", 
+      "Кількість коренів:", f1_analytical["total_roots"], "\n",
+      "Гарантовано дійсний корінь:", f1_analytical["has_real_guaranteed"], "\n",
+      "Максимальна кількість додатних коренів:", f1_analytical["pos_roots_max"], "\n",
+      "Максимальна кількість від'ємних коренів:", f1_analytical["neg_roots_max"], "\n",
+      "Необхідність наявності дійсності коренів:", f1_analytical["all_roots_real_necessary"], "\n",
+      "Кільце з усіма коренями:", f1_analytical["ring"]
+      )
 print("Знайдені корені для f1(x) графічно:", roots_f1)
-
+print("-----------------------------------")
 print("Табличні інтервали f2(x):", table_method(f2, a=0.5, b=4.0, h1=1.0))
 print("Знайдені корені для f2 графічно:", roots_f2)
