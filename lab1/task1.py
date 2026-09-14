@@ -199,9 +199,10 @@ def plot_graphical_separation(
 
     return roots
 
+# x**4 - 2*x**3 + x - 1.5
 roots_f1 = plot_graphical_separation(
-    g1=lambda x: 8 * x**4 - 8 * x**2,
-    g2=lambda x: -32 * x - 1,
+    g1=lambda x: x**4 - 2*x**3,
+    g2=lambda x: -x + 1.5,
     a=-2.2,
     b=1.2,
     title=r"Рівняння 1: $x^4 - 2x^3 + x - 1.5$",
@@ -209,9 +210,10 @@ roots_f1 = plot_graphical_separation(
     g2_label=r"$y = -x + 1.5$",
 )
 
+# sin(x) - x + 0.25
 roots_f2 = plot_graphical_separation(
-    g1=lambda x: 2 - x,
-    g2=lambda x: np.log10(x),
+    g1=lambda x: np.sin(x),
+    g2=lambda x: x - 0.25,
     a=0.2,
     b=3.5,
     title=r"Рівняння 2: $sin(x) - x + 0.25$",
