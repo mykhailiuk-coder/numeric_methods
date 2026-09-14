@@ -26,7 +26,7 @@ def tabulate_function(f: callable, a: float = -10, b: float = 10, h: float = 1) 
 
     return tabulated_function
 
-def table_method(f: callable, a: float = -10, b: float = 10, h1: float = 1.0) -> list:
+def table_method(f: callable, a: float, b: float, h1: float = 1.0) -> list:
     """
     Табулюємо функцію з великим кроком h1.
     Знаходимо всі інтервали зміни знака (ширші діапазони). Для кожного
