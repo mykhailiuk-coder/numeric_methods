@@ -70,12 +70,13 @@ def analytical_method(coefs: list) -> dict:
     Теорема Гюа: якщо всі корені дійсні, тоді квадрат будь-якого коефіцієнта(крім крайніх) більший за 
     Теорема про кільце коренів: корені многочлена містяться в кільці(рядок 110).
     """
-    #основна теорема алгебри
+    # Основна теорема алгебри
     n = len(coefs) - 1
 
     a_n = coefs[0]
     a0 = coefs[-1]
 
+    # Наслідок з основної теореми алгебри
     has_real_guaranteed = n % 2 != 0
 
     # Теорема Декарта: додатні корені 
@@ -203,25 +204,24 @@ roots_f1 = plot_graphical_separation(
     g2=lambda x: -32 * x - 1,
     a=-2.2,
     b=1.2,
-    title=r"Рівняння 1: $8x^4 - 8x^2 = -32x - 1$",
+    title=r"Рівняння 1: $x^4 - 2x^3 + x - 1.5$",
     g1_label=r"$y = x^4 - 2x^3$",
     g2_label=r"$y = -x + 1.5$",
 )
-print("Знайдені корені для f1 графічно:", roots_f1)
 
 roots_f2 = plot_graphical_separation(
     g1=lambda x: 2 - x,
     g2=lambda x: np.log10(x),
     a=0.2,
     b=3.5,
-    title=r"Рівняння 2: $2 - x = \lg(x)$",
+    title=r"Рівняння 2: $sin(x) - x + 0.25$",
     g1_label=r"$y = sin(x)$",
-    g2_label=r"$y = x-0.25$",
+    g2_label=r"$y = x - 0.25$",
 )
-
-print("Табличні інтервали f2(x):", table_method(f2, a=0.5, b=4.0, h1=1.0))
-#print("Знайдені корені для f2 графічно:", roots_f2)
 
 print("Табличні інтервали f1(x):", table_method(f1, a=-10, b = 10))
 print("Аналітичний висновок f1(x)", analytical_method([1, -2, 0, 1, -1.5]))
-#print("Знайдені корені для f1(x) графічно:", roots_f1)
+print("Знайдені корені для f1(x) графічно:", roots_f1)
+
+print("Табличні інтервали f2(x):", table_method(f2, a=0.5, b=4.0, h1=1.0))
+print("Знайдені корені для f2 графічно:", roots_f2)
