@@ -1,14 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+#
 def f1(x: float) -> float:
-    return 8*x**4 - 8*x**2 + 32*x + 1
+    return x**4 - 2*x**3 + x - 1.5
 
 def f2(x: float) -> float:
-    if x <= 0:
-        print("x must be greater than 0")
-        return None
-    return 2 - np.log10(x) - x
+    return np.sin(x) - x + 0.25
 
 def tabulate_function(f: callable, a: float = -10, b: float = 10, h: float = 1) -> dict:
     """
@@ -20,9 +18,11 @@ def tabulate_function(f: callable, a: float = -10, b: float = 10, h: float = 1) 
     tabulated_function = {}
     x = a
 
-    while x <= b:
+    num_steps = int(round((b - a) / h)) + 1
+
+    for i in range(num_steps):
+        x = round(a + i * h, 10)
         tabulated_function[x] = f(x)
-        x += h
 
     return tabulated_function
 
@@ -224,5 +224,5 @@ print("Табличні інтервали f2(x):", table_method(f2, a=0.5, b=4.
 print("Знайдені корені для f2 графічно:", roots_f2)
 
 print("Табличні інтервали f1(x):", table_method(f1))
-print("Аналітичний висновок f1(x)", analytical_method([8, 0, -8, 32, 1]))
+print("Аналітичний висновок f1(x)", analytical_method([1, -2, 0, 1, -1.5]))
 print("Знайдені корені для f1(x) графічно:", roots_f1)
