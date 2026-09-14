@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#
 def f1(x: float) -> float:
     return x**4 - 2*x**3 + x - 1.5
 
@@ -45,7 +44,7 @@ def table_method(f: callable, a: float, b: float, h1: float = 1.0) -> list:
         if y1 * y2 < 0:
             intervals.append((x1, x2))
     # Прибери в коментарі, якщо не хочеш бачити ширші діапазони
-    print("Ширші діапазони:", intervals)
+    # print("Ширші діапазони:", intervals)
 
     h2 = h1 / 2
     for x, y in intervals:
@@ -58,7 +57,7 @@ def table_method(f: callable, a: float, b: float, h1: float = 1.0) -> list:
             if y1 * y2 < 0:
                 smaller_intervals.append((x1, x2))
     # Прибери в коментарі, якщо не хочеш бачити вужчі діапазони
-    print("Вужчі діапазони:", smaller_intervals)
+    # print("Вужчі діапазони:", smaller_intervals)
 
     return smaller_intervals
 
@@ -205,8 +204,8 @@ roots_f1 = plot_graphical_separation(
     a=-2.2,
     b=1.2,
     title=r"Рівняння 1: $8x^4 - 8x^2 = -32x - 1$",
-    g1_label=r"$y = 8x^4 - 8x^2$",
-    g2_label=r"$y = -32x - 1$",
+    g1_label=r"$y = x^4 - 2x^3$",
+    g2_label=r"$y = -x + 1.5$",
 )
 print("Знайдені корені для f1 графічно:", roots_f1)
 
@@ -216,13 +215,13 @@ roots_f2 = plot_graphical_separation(
     a=0.2,
     b=3.5,
     title=r"Рівняння 2: $2 - x = \lg(x)$",
-    g1_label=r"$y = 2 - x$",
-    g2_label=r"$y = \lg(x)$",
+    g1_label=r"$y = sin(x)$",
+    g2_label=r"$y = x-0.25$",
 )
 
 print("Табличні інтервали f2(x):", table_method(f2, a=0.5, b=4.0, h1=1.0))
-print("Знайдені корені для f2 графічно:", roots_f2)
+#print("Знайдені корені для f2 графічно:", roots_f2)
 
 print("Табличні інтервали f1(x):", table_method(f1, a=-10, b = 10))
 print("Аналітичний висновок f1(x)", analytical_method([1, -2, 0, 1, -1.5]))
-print("Знайдені корені для f1(x) графічно:", roots_f1)
+#print("Знайдені корені для f1(x) графічно:", roots_f1)
