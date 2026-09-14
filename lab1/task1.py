@@ -9,7 +9,6 @@ def f2(x: float) -> float:
 
 def tabulate_function(f: callable, a: float, b: float, h: float = 1) -> dict:
     """
-    Алгоритм:
     Починаючи з точки a, обчислюємо значення функції f(x) через крок h до точки b.
     Результати зберігаються у словнику, де ключами є значення x, 
     а значеннями - відповідні значення функції f(x).
@@ -131,8 +130,8 @@ def f2_right(x):
     return np.log10(x)
 
 """
-# g1, g2 - елементарні функції які легше зобразити на графіку, 
-# такі щоб f(x) = g1(x) - g2(x)
+g1, g2 - елементарні функції які легше зобразити на графіку, 
+такі щоб f(x) = g1(x) - g2(x)
 """
 def graphic_method(
     g1: callable, g2: callable, a: float, b: float, h: float = 0.01
@@ -151,6 +150,10 @@ def graphic_method(
         if diff[i] * diff[i + 1] <= 0:
             x_approx = round((x_vals[i] + x_vals[i + 1]) / 2, 2)
             roots.append(x_approx)
+
+    for i in range(len(roots)):
+        roots[i] = float(roots[i])
+        
     return roots
 
 def plot_graphical_separation(
@@ -199,7 +202,6 @@ def plot_graphical_separation(
 
     return roots
 
-# x**4 - 2*x**3 + x - 1.5
 roots_f1 = plot_graphical_separation(
     g1=lambda x: x**4 - 2*x**3,
     g2=lambda x: -x + 1.5,
@@ -210,7 +212,6 @@ roots_f1 = plot_graphical_separation(
     g2_label=r"$y = -x + 1.5$",
 )
 
-# sin(x) - x + 0.25
 roots_f2 = plot_graphical_separation(
     g1=lambda x: np.sin(x),
     g2=lambda x: x - 0.25,
