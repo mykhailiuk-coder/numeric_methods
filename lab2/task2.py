@@ -60,7 +60,7 @@ try:
     kramer_solution = kramer_method(A, B)
     print("Розв'язок методом Крамера: ", kramer_solution)
     matrix_solution = matrix_method(A, B)
-    print("Розв'язок матричним методом: ", kramer_solution)
+    print("Розв'язок матричним методом: ", matrix_solution)
     numpy_solution = np.linalg.solve(np.array(A), np.array(B))
     print("Розв'язок з допомогою numpy solver:", numpy_solution)
 except ValueError as e: 
