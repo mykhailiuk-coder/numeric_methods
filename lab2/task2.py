@@ -19,7 +19,6 @@ def kramer_method(A: list[list[float | int]], B: list[float | int]) -> list[floa
     B = np.array(B)
     det = np.linalg.det(A)
     det_x = []
-
     for i in range(len(A)):
         A_temp = A.copy()
         A_temp[:, i] = B
@@ -57,11 +56,12 @@ A = [
     [3,-1,2,2]
 ]
 B = [1,2,3,4]
-
 try: 
     kramer_solution = kramer_method(A, B)
     print("Розв'язок методом Крамера: ", kramer_solution)
     matrix_solution = matrix_method(A, B)
     print("Розв'язок матричним методом: ", kramer_solution)
+    numpy_solution = np.linalg.solve(np.array(A), np.array(B))
+    print("Розв'язок з допомогою numpy solver:", numpy_solution)
 except ValueError as e: 
     print(f"Помилка вхідних даних: {e}")
