@@ -55,7 +55,7 @@ A = [
     [6,2,4,1],
     [3,-1,2,2]
 ]
-B = [1,2,3,4]
+B = [1,3,0,1]
 try: 
     kramer_solution = kramer_method(A, B)
     print("Розв'язок методом Крамера: ", kramer_solution)
