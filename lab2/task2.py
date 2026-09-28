@@ -57,11 +57,11 @@ A = [
 ]
 B = [1,3,0,1]
 try: 
-    kramer_solution = kramer_method(A, B)
+    kramer_solution = np.round(kramer_method(A, B), 8)
     print("Розв'язок методом Крамера: ", kramer_solution)
-    matrix_solution = matrix_method(A, B)
+    matrix_solution = np.round(matrix_method(A, B), 8)
     print("Розв'язок матричним методом: ", matrix_solution)
-    numpy_solution = np.linalg.solve(np.array(A), np.array(B))
+    numpy_solution = np.round(np.linalg.solve(np.array(A), np.array(B)), 8)
     print("Розв'язок з допомогою numpy solver:", numpy_solution)
 except ValueError as e: 
     print(f"Помилка вхідних даних: {e}")
