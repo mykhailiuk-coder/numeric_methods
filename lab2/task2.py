@@ -12,7 +12,7 @@ def kramer_method(A: list[list[float | int]], B: list[float | int]) -> list[floa
     rows, cols = A.shape
     if rows != cols:
         raise ValueError("Матриця не є квадратною")
-    if np.linalg.det(A) == 0:
+    if np.isclose(np.linalg.det(A), 0):
         raise ValueError("Початковий визначник дорівнює нулю")
 
     # Алгоритм
@@ -26,7 +26,7 @@ def kramer_method(A: list[list[float | int]], B: list[float | int]) -> list[floa
         det_x.append(det_xi)
 
     res = np.array(det_x) / det
-    return np.round(res.tolist(), 16)
+    return np.round(res,10).tolist()
 
 """
 A - матриця коефіцієнтів
@@ -40,14 +40,14 @@ def matrix_method(A: list[list[float | int]], B: list[float | int]) -> list[floa
     rows, cols = A.shape
     if rows != cols:
         raise ValueError("Матриця не є квадратною")
-    if np.linalg.det(A) == 0:
+    if np.isclose(np.linalg.det(A), 0):
         raise ValueError("Початковий визначник дорівнює нулю")  
 
     # Алгоритм
     B = np.array(B)
     A_inverse = np.linalg.inv(A)
     x = A_inverse @ B
-    return np.round(x.tolist(), 16)
+    return np.round(x, 10).tolist()
 
 A = [
     [4,2,3,1],
@@ -61,6 +61,8 @@ try:
     print("Розв'язок методом Крамера: ", kramer_solution)
     matrix_solution = np.round(matrix_method(A, B), 8)
     print("Розв'язок матричним методом: ", matrix_solution)
+    numpy_solution = np.linalg.solve(np.array(A), np.array(B))
+    print("Розв'язок з допомогою numpy solver:", np.round(numpy_solution, 10))
     numpy_solution = np.round(np.linalg.solve(np.array(A), np.array(B)), 8)
     print("Розв'язок з допомогою numpy solver:", numpy_solution)
 except ValueError as e: 
