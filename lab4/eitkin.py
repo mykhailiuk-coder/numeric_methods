@@ -2,6 +2,12 @@ def aitken(x_s, y_s, x, eps=0.01, verbose=True):
     n = len(x_s)
     P = [[0.0] * n for _ in range(n)]
 
+    if len(x_s) != len(y_s):
+        raise ValueError("Помилка: неправильно задана таблична функція")
+
+    if x > max(x_s) or x < min(x_s):
+        raise ValueError("Помилка: інтерполяція не проводиться поза межами табличної функції")
+
     for i in range(n):
         P[i][0] = y_s[i]
 
@@ -38,5 +44,8 @@ def aitken(x_s, y_s, x, eps=0.01, verbose=True):
 x_s = [0.0, 1.0, 2.0, 3.0]
 y_s = [1.0, 3.0, 9.0, 19.0]
 
-result = aitken(x_s, y_s, x=1.5, eps=0.01, verbose=True)
-print(f"Результат: {result:.2f}")
+try:
+    result = aitken(x_s, y_s, x=1.5, eps=0.01, verbose=True)
+    print(f"Результат: {result:.2f}")
+except ValueError as e:
+    print(e)
